@@ -1,4 +1,5 @@
 'use client'
+import Footer from '@/components/Footer'
 import MessageCard from '@/components/MessageCard'
 import Navbar from '@/components/Navbar'
 import { Button } from '@/components/ui/button'
@@ -154,6 +155,7 @@ const Dashboard = () => {
           <div className='mt-4 grid grid-cols-1 md:grid-cols-2 gap-6'>
             {messages.length > 0 ? (
               messages.map((message) => (
+                console.log(message),
                 <MessageCard key={message._id} message={message} onMessageDelete={handleDeleteMessage}/>
               ))
               
@@ -166,6 +168,7 @@ const Dashboard = () => {
 
         </div>
     </div>
+    <Footer/>
     </div>
   )
 }
