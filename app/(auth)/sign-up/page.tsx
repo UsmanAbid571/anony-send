@@ -27,8 +27,6 @@ import { Button } from "@/components/ui/button"
 
 const SignUp = () => {
   const [ username, setUsername ] = useState('')
-  const [ usernameMessage, setUsernameMessage ] = useState('')
-  const [ isCheckingUsername, setIsCheckingUsername ] = useState(false)
   const [ isSubmiting, setIsSubmiting] = useState(false)
   const debouncedUsername = useDebounceValue(username, 300)
   const router = useRouter()
@@ -45,18 +43,13 @@ const SignUp = () => {
   useEffect( () => {
     const checkUsernameUnique = async () => {
       if(debouncedUsername){
-        setIsCheckingUsername(true)
-        setUsernameMessage('')
         try {
           const response = await axios.get(`/api/check-username-unique?username=${debouncedUsername}`)
-          setUsernameMessage(response.data.message)
+          toast.success(response.data.message)
           
         } catch (error) {
           const axiosError = error as AxiosError<ApiResponse>
-          setUsernameMessage('Axios Error: ' + axiosError.response?.data.message)
-        }
-        finally {
-          setIsCheckingUsername(false)
+         toast.error('Axios Error: ' + axiosError.response?.data.message)
         }
       }
       

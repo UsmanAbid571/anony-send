@@ -6,7 +6,6 @@ import {
     Section,
     Preview,
     Text,
-    Button,
     Heading
 
 } from "@react-email/components";
