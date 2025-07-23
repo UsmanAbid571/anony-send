@@ -5,11 +5,12 @@ import UserModel from "@/model/User";
 import { User } from "next-auth";
 
 
-export async function DELETE(request: Request, {params}:{params:{messageId:string}}) {
+export async function DELETE(req:Request) {
      await dbConnect()
 
     const session = await getServerSession( authOptions )
-    const messageId = params.messageId
+     const url = new URL(req.url);
+     const messageId = url.pathname.split("/").pop();
     const user: User = session?.user 
 
     // Check if the user or session is available
