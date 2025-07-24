@@ -63,16 +63,15 @@ export default function Home() {
           </Card>
           </div>
         </div>
-        <div>
-           <Card>
-            <CardHeader>
-              <CardTitle className="text-center text-3xl lg:text-4xl tracking-tight font-extrabold my-4">How It Works</CardTitle>
-              <CardContent>
+        <div className="mt-24">
+           
+              <h2 className="text-center text-3xl lg:text-4xl tracking-tight font-extrabold my-4">How It Works</h2>
+              
                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-10">
           <Card>
             <CardHeader>
               <CardTitle>Step 1</CardTitle>
-              <CardDescription>Create a new account or login to an existiong account</CardDescription>
+              <CardDescription>Create a new account or login to an existing account</CardDescription>
             </CardHeader>
           </Card>
           <Card>
@@ -88,22 +87,16 @@ export default function Home() {
             </CardHeader>
           </Card>
           </div>
-
-              </CardContent>
-            </CardHeader>
-          </Card>
         </div>
-        <Card>
-        <div className="flex items-center justify-evenly  w-full">
-          <h2 className="text-5xl lg:text-6xl tracking-tight font-extrabold my-4 ">Usage</h2>
-          <Separator orientation="vertical" className=""/>
-          <span className=" tracking-tight"><ul className="list-disc"><li>Get honest feedback</li><li>Fun with friends</li><li>Anonymous confessions</li></ul></span>
+        <div className="flex items-center justify-evenly w-full h-48 mt-10">
+          <h2 className="text-3xl lg:text-6xl tracking-tight font-extrabold my-4 ">Usage</h2>
+          <Separator orientation="vertical"/>
+          <span className="tracking-tight "><ul className="list-disc text-sm lg:text-lg"><li>Get honest feedback</li><li>Fun with friends</li><li>Anonymous confessions</li></ul></span>
         </div>
-        </Card>
-        <Card className="px-5 mb-5">
-          <CardTitle className="text-2xl lg:text-3xl tracking-tight font-extrabold my-4 ">Ready to hear what they really think?</CardTitle>
+        <div className="px-5 mt-24 mb-5 text-center">
+          <h2 className="text-2xl lg:text-3xl tracking-tight font-extrabold my-4 ">Ready to hear what they really think?</h2>
          <Link href="/sign-up"><Button className="mx-6">Signup Now</Button></Link> 
-        </Card>
+        </div>
 
       </div>
      </div>
