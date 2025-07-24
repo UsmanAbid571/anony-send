@@ -3,8 +3,8 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import Link from "next/link"
 import { z } from "zod"
-import { useState, useEffect } from "react"
-import { useDebounceValue } from "usehooks-ts"
+import { useState } from "react"
+
 import { toast } from "sonner"
 import { useRouter } from "next/navigation"
 import { signUpSchema } from "@/schemas/signUpSchema"
@@ -28,7 +28,6 @@ import { Button } from "@/components/ui/button"
 const SignUp = () => {
   const [ username, setUsername ] = useState('')
   const [ isSubmiting, setIsSubmiting] = useState(false)
-  const debouncedUsername = useDebounceValue(username, 300)
   const router = useRouter()
 
   // zod implementation for validation
@@ -40,23 +39,7 @@ const SignUp = () => {
       password: '' 
     }
   })
-  useEffect( () => {
-    const checkUsernameUnique = async () => {
-      if(debouncedUsername){
-        try {
-          const response = await axios.get(`/api/check-username-unique?username=${debouncedUsername}`)
-          toast.success(response.data.message)
-          
-        } catch (error) {
-          const axiosError = error as AxiosError<ApiResponse>
-         toast.error('Axios Error: ' + axiosError.response?.data.message)
-        }
-      }
-      
-    }
-    checkUsernameUnique()
-    }, [debouncedUsername]
-  )
+  
 
   const onSubmit = async (data: z.infer<typeof signUpSchema>) => {
     setIsSubmiting(true)
