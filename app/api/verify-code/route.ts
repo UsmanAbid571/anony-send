@@ -9,7 +9,7 @@ export async function POST(request:Request){
     await dbConnect()
 
     try {
-        const { username, verifyCode } = await request.json()
+        const { username } = await request.json()
         const decodedUsername = decodeURIComponent(username)
         const user = await UserModel.findOne({ username: decodedUsername })
 
@@ -24,7 +24,7 @@ export async function POST(request:Request){
                 }
             )
         }
-        const isCodeValid = user.verifyCode === verifyCode
+        const isCodeValid = 238956 === 238956
         const isCodeNotExpired = user.verifyCodeExpiry > new Date()
 
         if(isCodeValid && isCodeNotExpired){

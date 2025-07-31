@@ -15,16 +15,12 @@ const VerifyAccount = () => {
   const router = useRouter()
   const params = useParams<{username: string}>()
    // zod implementation for validation
-    const form = useForm<z.infer<typeof verifySchema>>({
-      resolver: zodResolver(verifySchema),
-     
-    })
+   const form = useForm()
 
-    const onSubmit = async (data: z.infer<typeof verifySchema >) => {
+    const onSubmit = async () => {
       try {
        const response = await axios.post(`/api/verify-code`, {
-          username: params.username,
-          verifyCode: data.code
+          username: params.username
 
         }) 
         toast.success(response.data.message)
@@ -40,9 +36,11 @@ const VerifyAccount = () => {
       <div className="w-full max-w-md p-8 space-y-8 bg-white rounded lg shadow-md border">
          <div className="text-center">
           <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl mb-6">Verify Your Account</h1>
+          
           <p className="mb-4">Enter the verification code sent on your email</p>
+          <div className="bg-red-700 text-white w-full h-fit p-2"><p className="tracking-tighter">Note: Verification email is not working due to public domain. Please click on verify button to verify your account.</p></div>
         </div>
-         <Form {...form}>
+         <Form {...form} >
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
         <FormField
           control={form.control}
@@ -51,7 +49,7 @@ const VerifyAccount = () => {
             <FormItem>
               <FormLabel>Verification Code</FormLabel>
               <FormControl>
-                <Input placeholder="Code" {...field} />
+                <Input placeholder="Code" {...field} disabled/>
               </FormControl>
               <FormMessage />
             </FormItem>
