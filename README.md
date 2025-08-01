@@ -51,7 +51,8 @@ npm install
 # 4. Start the development server
 npm run dev
 
-Contributing
+
+##Contributing
 
 Pull requests are welcome! If you’d like to improve features or fix bugs, feel free to fork the repo and open a PR.
 	1.	Fork the project
@@ -62,13 +63,13 @@ Pull requests are welcome! If you’d like to improve features or fix bugs, feel
 
 ⸻
 
-📃 License
+##📃 License
 
 MIT License © 2025 Muhammad Usman Abid
 
 ⸻
 
-💬 Connect
+##💬 Connect
 
 Want to give feedback or ask questions?
 
